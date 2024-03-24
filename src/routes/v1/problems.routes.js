@@ -9,13 +9,13 @@ problemRouter.get('/ping', problemController.pingProblemController)
 
 problemRouter.get('/:id', problemController.getProblem)
 
-problemRouter.get('/:id', problemController.getProblems)
+problemRouter.get('/', problemController.getProblems)
 
-problemRouter.get('/:id', problemController.addProblem)
+problemRouter.post('/', problemController.addProblem)
 
-problemRouter.get('/:id', problemController.deleteProblem)
+problemRouter.delete('/:id', problemController.deleteProblem)
 
-problemRouter.get('/:id', problemController.updateProblem)
+problemRouter.put('/:id', problemController.updateProblem)
 
 
 
