@@ -9,7 +9,7 @@ problemRouter.get('/ping', problemController.pingProblemController)
 
 problemRouter.get('/:id', problemController.getProblem)
 
-problemRouter.get('/', problemController.getProblems)
+problemRouter.get('/', problemController.getProblem) 
 
 problemRouter.post('/', problemController.addProblem)  
 
