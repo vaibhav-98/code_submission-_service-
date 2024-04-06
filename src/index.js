@@ -31,10 +31,11 @@ app.listen(PORT, async() => {
     console.log("Successfully connected to db");
 
     // dummy code  for testing
-    const Cat = mongoose.model('Cat', {name:String});
+   /* const Cat = mongoose.model('Cat', {name:String});
 
     const kitty = new Cat({name: "Zippi"});
     kitty.save().then( ()=> console.log('meow'))
+    */
 
 })
 
