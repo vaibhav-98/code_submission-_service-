@@ -2,6 +2,7 @@ const { StatusCodes } = require('http-status-codes')
 const NotImplementError = require('../errors/NotImplemented.error')
 const { ProblemService } = require('../services')
 const { ProblemRepository } = require('../repositories')
+const { error } = require('winston')
 
 const problemService = new ProblemService ( new ProblemRepository())
 
@@ -31,7 +32,8 @@ async function addProblem(req,res,next) {
 
 
 
-async function getProblem(req,res) {
+async function getProblem(req,res,next) {
+    console.log("come  in controller");
    try {
      const  response = await  problemService.getAllProblem();
      return  res.status(StatusCodes.OK).json({
@@ -65,11 +67,20 @@ async function getProblem(req,res,next) {
 
 
 
-function deleteProblem(req,res) {
+async function deleteProblem(req,res,next) {
 
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message: "Not Implemented"
-    })
+   try {
+      const response = await problemService.deleteProblem(req.params.id);
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            message: "Successfully deleted problem by id ",
+            error: {},
+            data: response
+
+        })
+   } catch (error) {
+      next(error)
+   }
 }
 
 function updateProblem(req,res) {
